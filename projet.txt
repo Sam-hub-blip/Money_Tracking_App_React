@@ -1,0 +1,12 @@
+Projet Money Tracking App version React
+Debut 20/10/2026
+
+20/10/2026 =>{
+    1. Creation du projet et installation des packages
+    2. Creation de l'arborescence
+
+}
+
+21/10/2026 =>{
+    1.Creation et fin de inputs.jsx, loginForm.jsx, signForm.jsx, NotFound.jsx
+}

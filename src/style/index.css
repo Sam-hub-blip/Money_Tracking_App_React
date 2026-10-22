@@ -1,0 +1,40 @@
+@import "tailwindcss"; 
+:root {
+  --color-fond: #f9fafb;      /* gray-50 */
+  --color-surface: #ffffff;
+  --color-texte: #111827;     /* gray-900 */
+  --color-texte-secondaire: #6b7280;
+  --color-primaire: #2563eb;
+}
+
+/* Thème sombre : appliqué quand <html> a la classe "dark" */
+.dark {
+  --color-fond: #111827;
+  --color-surface: #1f2937;
+  --color-texte: #f9fafb;
+  --color-texte-secondaire: #9ca3af;
+  --color-primaire: #3b82f6;
+}
+
+@tailwind preflight;
+@tailwind utilities;
+@tailwind utilities;
+
+
+@layer components {
+    .btn-second{
+        @apply bg-white py-2 rounded-2xl px-4 hover:px-4.5 hover:py-2.5  text-xl font-semibold;
+    }
+    .title{
+        @apply bg-linear-to-b from-orange-700 via-blue-950  to-red-800;
+    }
+    .input-design{
+        @apply  flex flex-col items-center justify-center
+    }
+    .input{
+        @apply bg-white rounded-md
+    }
+    .btn {
+        @apply rounded-xl p-1 px-3 
+    }
+}
