@@ -1,27 +1,19 @@
 @import "tailwindcss"; 
-:root {
-  --color-fond: #f9fafb;      /* gray-50 */
-  --color-surface: #ffffff;
-  --color-texte: #111827;     /* gray-900 */
-  --color-texte-secondaire: #6b7280;
-  --color-primaire: #2563eb;
+
+:root { --fond: #f9fafb; --surface: #fff; --texte: #111827; --texte-2: #6b7280; --primaire: #2563eb; }
+.dark  { --fond: #111827; --surface: #1f2937; --texte: #f9fafb; --texte-2: #9ca3af; --primaire: #3b82f6; }
+
+@theme inline {
+  --color-fond: var(--fond);
+  --color-surface: var(--surface);
+  --color-texte: var(--texte);
+  --color-texte-2: var(--texte-2);
+  --color-primaire: var(--primaire);
 }
 
-/* Thème sombre : appliqué quand <html> a la classe "dark" */
-.dark {
-  --color-fond: #111827;
-  --color-surface: #1f2937;
-  --color-texte: #f9fafb;
-  --color-texte-secondaire: #9ca3af;
-  --color-primaire: #3b82f6;
-}
-
-@tailwind preflight;
-@tailwind utilities;
-@tailwind utilities;
 
 
-@layer components {
+@utility components {
     .btn-second{
         @apply bg-white py-2 rounded-2xl px-4 hover:px-4.5 hover:py-2.5  text-xl font-semibold;
     }

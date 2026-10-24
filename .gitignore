@@ -1,0 +1,36 @@
+# Dépendances
+node_modules/
+
+# Build de production
+dist/
+dist-ssr/
+
+# Variables d'environnement (ton API_URL, tokens...)
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Fichiers locaux de Vite
+*.local
+
+# Éditeurs et OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Cache ESLint
+.eslintcache

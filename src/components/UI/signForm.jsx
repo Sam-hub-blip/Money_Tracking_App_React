@@ -9,11 +9,13 @@ function SignForm({setData}) {
     const [confirmPassword,setConfirmPassword] = useState("");
     const [PasswordError,setPasswordError] = useState(false);
     
-    const handleSubmit = ()=>{
+    const handleSubmit = (e)=>{
+        e.preventDefault();
         if (password != confirmPassword){
             setPasswordError(true);
             return;
         }
+        setConfirmPassword(false);
         setData({
             firstName : firstName,
             lastName : lastName,
@@ -42,7 +44,7 @@ function SignForm({setData}) {
             )
         }
         <div>
-            <button type="submit" disabled={ lastName.trim()!="" && firstName.trim()!="" && email.trim()!="" && password.trim()!=""}>Sign</button>
+            <button type="submit" disabled={ !(lastName.trim()=="" && firstName.trim()=="" && email.trim()=="" && password.trim()=="")}>Sign</button>
         </div>
         <div>
             <p>I already have an account?</p>

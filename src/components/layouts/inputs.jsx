@@ -1,5 +1,5 @@
 import { useState } from "react"
-import {infoIconRed} from "../../../assets/images/icon-info-red.svg"
+import infoIconRed from "../../assets/images/icon-info.svg"
 
  export function InputEmail({setEmail}) {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -10,10 +10,11 @@ import {infoIconRed} from "../../../assets/images/icon-info-red.svg"
         setError(false) 
         if (userValue.length > 0 && !emailRegex.test(userValue)) {
             setError(true);
-            setEmail(userValue);
         }
         else{
-            setError(false);  
+            setError(false);
+            setEmail(userValue);
+  
         }
     };
   return (
@@ -36,9 +37,9 @@ export function InputPassword({name, setPassword}) {
     const [toggle,setToggle] = useState(false);
   return (
     <div>
-        <label htmlFor={name} >{name} </label>
+        <label htmlFor={name} > </label>
         <div>
-            <input type="text" name={name} id={name} onChange={(e)=> setPassword(e.target.value) } />
+            <input type={toggle? "text": "password"} name={name} id={name} onChange={(e)=> setPassword(e.target.value) } />
             <button onClick={()=>setToggle(!toggle)}>
                 {toggle? "hide" : "show"}
             </button>
