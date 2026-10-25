@@ -10,13 +10,17 @@ function App() {
     email,
     password
   })
+  const [sortBy,setSortBy] = useState({
+    selection,
+    invertion
+  })
   let tab = ["yo","ya","bien","non"];
 
   return (
     <div>
       <NotFound />
-      <LoginForm/>
-      <SortBy categoryList={tab}/>
+      <LoginForm setData={setData}/>
+      <SortBy categoryList={tab} setSortBy={setSortBy}/>
     </div>
 
   )

@@ -37,7 +37,7 @@ export function InputPassword({name, setPassword}) {
     const [toggle,setToggle] = useState(false);
   return (
     <div>
-        <label htmlFor={name} > </label>
+        <label htmlFor={name} > {name} </label>
         <div>
             <input type={toggle? "text": "password"} name={name} id={name} onChange={(e)=> setPassword(e.target.value) } />
             <button onClick={()=>setToggle(!toggle)}>

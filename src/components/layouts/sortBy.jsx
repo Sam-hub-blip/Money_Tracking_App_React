@@ -12,9 +12,9 @@ function SortBy({categoryList, setSortBy}) {
   return (
     <div>
         <select name="sort" id="sort" onChange={handleSelection}>
-          {categoryList.map((item)=>{
+          {categoryList.map((item)=>( 
             <option  key={item} value={item}>{item}</option>
-          })}
+          ))}
         </select>
         <button onClick={()=> setinverted(!inverted)}>invert</button>
     </div>
