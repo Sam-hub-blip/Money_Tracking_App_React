@@ -2,21 +2,20 @@ import { useState } from "react"
 import {InputEmail, InputPassword} from "../layouts/inputs.jsx"
 
 
-function LoginForm({setData}) {
+function LoginForm() {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
 
     const handleSubmit = (e)=>{
       e.preventDefault(); 
-      setData({
+      const logData = {
         email : email,
         password : password
-      })
+      }
     }
   return (
     <form action="#" onSubmit={handleSubmit}>
         <InputEmail setEmail={setEmail}/>
-        <p >hello </p>
         <InputPassword name="Password" setPassword={setPassword}/>
         <div>
           <button type="submit">Login</button>

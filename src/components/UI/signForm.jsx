@@ -15,10 +15,9 @@ function SignForm({setData}) {
             setPasswordError(true);
             return;
         }
-        setConfirmError(false);
+        setPasswordError(false);
         setData({
-            firstName : firstName,
-            lastName : lastName,
+            name : firstName +" "+lastName,
             email : email,
             password : password
         })
@@ -44,7 +43,7 @@ function SignForm({setData}) {
             )
         }
         <div>
-            <button type="submit" disabled={ !(lastName.trim()=="" || firstName.trim()=="" || email.trim()=="" || password.trim()=="")}>Sign</button>
+            <button type="submit" disabled={(lastName.trim()=="" || firstName.trim()=="" || email.trim()=="" || password.trim()=="")}>Sign</button>
         </div>
         <div>
             <p>I already have an account?</p>

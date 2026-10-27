@@ -1,1 +1,0 @@
-export const address = 'http://localhost:8000/';
