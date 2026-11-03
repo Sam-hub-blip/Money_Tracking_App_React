@@ -11,16 +11,19 @@ function SignForm({setData}) {
     
     const handleSubmit = (e)=>{
         e.preventDefault();
-        if (password != confirmPassword){
-            setPasswordError(true);
-            return;
-        }
         setPasswordError(false);
         setData({
             name : firstName +" "+lastName,
             email : email,
             password : password
         })
+    }
+    const confirmation = () =>{
+        if(password!== confirmPassword){
+            setPasswordError(true);
+            return;
+        }
+        setConfirmPassword(false);
     }
   return (
     <form action="#" onSubmit={handleSubmit}>

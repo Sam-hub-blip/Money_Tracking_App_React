@@ -2,6 +2,7 @@ import { useState,useEffect,useContext } from "react";
 import { TransactionContext } from "./transactionContext";
 import { UserContext } from "../userContext/userContext";
 
+
 export const TransactionProvider = ({ children })=>{
     const { user } = useContext(UserContext);
     const [transaction,setTransaction] = useState([]);
@@ -29,7 +30,7 @@ export const TransactionProvider = ({ children })=>{
         }
     }
 
-    useEffect(() =>{
+    useEffect(() => {
         if(user) refresh();
         else setTransaction([]);
     }, [user]);
@@ -44,7 +45,10 @@ export const TransactionProvider = ({ children })=>{
         const created  = await res.json();
         setTransaction((prev) => [created,...prev]);
     }
-
+    const updateTransaction = async (data,id) => {
+        console.log("Construct the update transaction's function");
+        setTransaction();
+    }
     const deleteTransaction = async(id)=>{
         const res = await fetch("",{
             method: "DELETE",
@@ -66,6 +70,7 @@ export const TransactionProvider = ({ children })=>{
         error,
         refresh,
         addTransaction,
+        updateTransaction,
         deleteTransaction,
         expenseBalance,
         incomeBalance,
