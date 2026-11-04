@@ -43,7 +43,7 @@ function SignForm({setData}) {
             <button type="submit" disabled={(lastName.trim()=="" || firstName.trim()=="" || email.trim()=="" || password.trim()=="")}>Sign</button>
         </div>
         <div>
-            <p>I already have an account?</p>
+            <Link>I already have an account?</Link>
         </div>
     </form>
   )

@@ -1,7 +1,7 @@
 function SmallHistoryElement({items}){
 
     return(
-        <div>
+        <div className="">
             <span> {items.name} </span>
             <span> {items.describe} </span>
             <span> {items.amount} </span>

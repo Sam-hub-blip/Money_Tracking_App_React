@@ -1,6 +1,6 @@
 import { useState } from "react"
 import {InputEmail, InputPassword} from "../layouts/inputs.jsx"
-
+import { Link } from "react-router";
 
 function LoginForm() {
     const [email,setEmail] = useState("");
@@ -21,7 +21,7 @@ function LoginForm() {
           <button type="submit">Login</button>
         </div>
         <div>
-            <p>I don't have account?</p>
+            <Link to="/register" >I don't have account?</Link>
         </div>
         
     </form>

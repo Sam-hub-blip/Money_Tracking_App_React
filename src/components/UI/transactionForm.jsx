@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTransactions } from "../../hooks/useTransaction";
 
-function TransactionForm() {
+function TransactionForm({ sethideModal}) {
     const { addTransaction } = useTransactions();
     const today = () => new Date().toISOString().split("T")[0]; // "2026-10-27"
     const [name,setName] = useState("");
@@ -35,6 +35,7 @@ function TransactionForm() {
         setDate(today());
         setDescription("");
         setType("");
+        sethideModal(true);
     }
 
     return (

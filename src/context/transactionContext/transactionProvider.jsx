@@ -1,6 +1,7 @@
 import { useState,useEffect,useContext } from "react";
 import { TransactionContext } from "./transactionContext";
 import { UserContext } from "../userContext/userContext";
+import  {API} from "../userContext/userProvider"
 
 
 export const TransactionProvider = ({ children })=>{
@@ -19,7 +20,7 @@ export const TransactionProvider = ({ children })=>{
         setLoading(true);
         setError(null);
         try{
-            const res = await fetch("",{ headers });
+            const res = await fetch(` ${API}/transactions `,{ headers });
             if(!res.ok) throw new Error ("Chargement impossible");
             setTransaction(await res.json());
         }catch(err){
@@ -36,7 +37,7 @@ export const TransactionProvider = ({ children })=>{
     }, [user]);
 
     const addTransaction = async(data) => {
-        const res =  await fetch("",{
+        const res =  await fetch(` ${API}/addTransaction`,{
             method: "POST",
             headers,
             body: JSON.stringify(data),
@@ -45,9 +46,9 @@ export const TransactionProvider = ({ children })=>{
         const created  = await res.json();
         setTransaction((prev) => [created,...prev]);
     }
-    const updateTransaction = async (data,id) => {
+    const updateTransaction = async (data) => {
 
-        const res = await fetch(`${API}/transactions/${id}`, {
+        const res = await fetch(`${API}/updateTransaction`, {
             method: "PUT",
             headers,
             body: JSON.stringify(data),
@@ -62,7 +63,7 @@ export const TransactionProvider = ({ children })=>{
     };
     
     const deleteTransaction = async(id)=>{
-        const res = await fetch("",{
+        const res = await fetch(` ${API}/delete/${id}`,{
             method: "DELETE",
             headers,
         });

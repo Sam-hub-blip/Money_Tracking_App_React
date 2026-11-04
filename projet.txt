@@ -10,3 +10,15 @@ Debut 20/10/2026
 21/10/2026 =>{
     1.Creation et fin de inputs.jsx, loginForm.jsx, signForm.jsx, NotFound.jsx
 }
+
+les adresses des fetch = {
+    ./me  => recuperation de la du token et des infos 
+    ./login => connection par email et mot de passe
+    ./register => enregistrement avec name, email, mot de passe
+    AVEC TOKEN
+    ./transactions => recuperation de la liste des transactions
+    ./addTransaction => ajout d'une transaction avec name,amount,type,date,description
+    ./updateTransaction => modifier une trnasaction avec id,name,amount,type,date,description
+    ./delete/${id} => supprimer une transaction 
+    
+}

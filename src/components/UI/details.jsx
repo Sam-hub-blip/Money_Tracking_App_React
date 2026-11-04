@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTransactions } from "../../hooks/useTransaction";
-function Details(props) {
+function Details({props, setHideModal}) {
 
     const { updateTransaction } = useTransactions();
     const [name,setName] = useState(props.name);
@@ -13,6 +13,7 @@ function Details(props) {
     const handleSubmit = async(e) => {
         e.preventDefault();
         const data = {
+            id : props.id,
             name : name,
             amount : amount,
             date : date,
@@ -20,7 +21,7 @@ function Details(props) {
             description : description
         };
         try {
-            await updateTransaction(data,props.id);
+            await updateTransaction(data,);
             cancel();
         } catch (error) {
             setError(error);            
@@ -33,21 +34,22 @@ function Details(props) {
         setDate(today());
         setDescription("");
         setType("");
+        setHideModal(true);
     }
 
     return (
         <form action="#" onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="name">Name</label>
-                <input type="text" value={name} id="name" onChange={(e)=> setName(e.target.value)} hidden/>
+                <input type="text" value={name} id="name" onChange={(e)=> setName(e.target.value)} />
             </div>
             <div>
                 <label htmlFor="amount">Amount</label>
-                <input type="text" value={amount} id="amount" onChange={(e)=> setAmount(e.target.value)} hidden/>
+                <input type="text" value={amount} id="amount" onChange={(e)=> setAmount(e.target.value)} />
             </div>
             <div>
                 <label htmlFor="date">Date</label>
-                <input type="date" value={date} id="date" hidden onChange={(e)=> setDate(e.target.value)}/>
+                <input type="date" value={date} id="date"  onChange={(e)=> setDate(e.target.value)}/>
             </div>
             <div>
                 <select name="type" id="type" onChange={(e)=> setType(e.target.value)}>
@@ -57,7 +59,7 @@ function Details(props) {
                 </select>
             </div>
             <div>
-                <textarea placeholder="Description " type="text" id="description" value={description} onChange={(e)=> setDescription(e.target.value)} hidden />
+                <textarea placeholder="Description " type="text" id="description" value={description} onChange={(e)=> setDescription(e.target.value)}  />
             </div>
             { error && (
                 <p> {error} </p>
