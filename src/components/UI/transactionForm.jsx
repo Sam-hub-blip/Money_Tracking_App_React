@@ -21,8 +21,9 @@ function TransactionForm() {
                 type : type,
                 description : description,
             }
-             await addTransaction(data);
-             cancel();
+
+            await addTransaction(data);
+            cancel();
         }catch(err){
             setError(err.message);
         }
@@ -40,15 +41,15 @@ function TransactionForm() {
         <form action="#" onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="name">Name</label>
-                <input type="text" value={name} id="name" onChange={(e)=> setName(e.target.value)} hidden/>
+                <input type="text" value={name} id="name" onChange={(e)=> setName(e.target.value)} />
             </div>
             <div>
                 <label htmlFor="amount">Amount</label>
-                <input type="text" value={amount} id="amount" onChange={(e)=> setAmount(e.target.value)} hidden/>
+                <input type="text" value={amount} id="amount" onChange={(e)=> setAmount(e.target.value)} />
             </div>
             <div>
                 <label htmlFor="date">Date</label>
-                <input type="date" value={date} id="date" hidden onChange={(e)=> setDate(e.target.value)}/>
+                <input type="date" value={date} id="date"  onChange={(e)=> setDate(e.target.value)}/>
             </div>
             <div>
                 <select name="type" id="type" onChange={(e)=> setType(e.target.value)}>
@@ -58,7 +59,7 @@ function TransactionForm() {
                 </select>
             </div>
             <div>
-                <textarea placeholder="Description " type="text" id="description" value={description} onChange={(e)=> setDescription(e.target.value)} hidden />
+                <textarea placeholder="Description " type="text" id="description" value={description} onChange={(e)=> setDescription(e.target.value)}  />
             </div>
             { error && (
                 <p> {error} </p>
@@ -67,7 +68,7 @@ function TransactionForm() {
                 <button type="submit" disabled={(name.trim()=="" || Number(amount)<=0 || type.trim()=="" )} >Save</button>
             </div>
             <div >
-                <button onClick={cancel}>Cancel</button>
+                <button type="button" onClick={cancel}>Cancel</button>
             </div>
         </form>
     );

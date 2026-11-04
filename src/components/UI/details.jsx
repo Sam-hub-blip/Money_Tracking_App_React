@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useTransaction } from "../../hooks/useTransaction";
+import { useTransactions } from "../../hooks/useTransaction";
 function Details(props) {
 
-    const { updateTransaction } = useTransaction();
+    const { updateTransaction } = useTransactions();
     const [name,setName] = useState(props.name);
     const [amount,setAmount] = useState(props.amount);
     const [date,setDate] = useState(props.date);
@@ -10,8 +10,29 @@ function Details(props) {
     const [description,setDescription] = useState(props.description);
     const [error,setError] = useState(null);
     
-    const handleSubmit = () => {
-        
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        const data = {
+            name : name,
+            amount : amount,
+            date : date,
+            type : type,
+            description : description
+        };
+        try {
+            await updateTransaction(data,props.id);
+            cancel();
+        } catch (error) {
+            setError(error);            
+        }
+
+    }
+    const cancel = () => {
+        setName("");
+        setAmount(0);
+        setDate(today());
+        setDescription("");
+        setType("");
     }
 
     return (
@@ -47,7 +68,7 @@ function Details(props) {
                 <button type="submit" disabled={(name.trim()=="" || Number(amount)<=0 || type.trim()=="" )} >Save modification</button>
                 </div>
                 <div >
-                    <button onClick={cancel}>Cancel</button>
+                    <button type="button" onClick={cancel}>Cancel</button>
                 </div>
             </div>
         </form>

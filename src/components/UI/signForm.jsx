@@ -18,13 +18,7 @@ function SignForm({setData}) {
             password : password
         })
     }
-    const confirmation = () =>{
-        if(password!== confirmPassword){
-            setPasswordError(true);
-            return;
-        }
-        setConfirmPassword(false);
-    }
+
   return (
     <form action="#" onSubmit={handleSubmit}>
         <div>

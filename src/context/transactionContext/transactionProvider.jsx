@@ -46,9 +46,21 @@ export const TransactionProvider = ({ children })=>{
         setTransaction((prev) => [created,...prev]);
     }
     const updateTransaction = async (data,id) => {
-        console.log("Construct the update transaction's function");
-        setTransaction();
-    }
+
+        const res = await fetch(`${API}/transactions/${id}`, {
+            method: "PUT",
+            headers,
+            body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error("Modification impossible");
+
+        const updated = await res.json();
+
+        setTransaction((prev) =>
+            prev.map((t) => (t.id === id ? updated : t))
+        );
+    };
+    
     const deleteTransaction = async(id)=>{
         const res = await fetch("",{
             method: "DELETE",
@@ -64,7 +76,7 @@ export const TransactionProvider = ({ children })=>{
         (sum,t) => sum + (t.type ==="income"? t.amount: 0),0
     );
     return(
-        <TransactionContext value={{
+        <TransactionContext.Provider value={{
         transaction,
         loading,
         error,
@@ -76,6 +88,6 @@ export const TransactionProvider = ({ children })=>{
         incomeBalance,
         }} >
             { children }
-        </TransactionContext>
+        </TransactionContext.Provider>
     )
 }
