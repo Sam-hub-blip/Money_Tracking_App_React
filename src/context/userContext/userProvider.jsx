@@ -1,9 +1,8 @@
-import { meta } from "eslint-plugin-react-hooks";
 import { UserContext } from "./userContext";
 import { useState, useEffect } from "react"; 
 
 
-export const API = import.meta.VITE_API_URL;
+export const API = import.meta.env.VITE_API_URL;
 
 export const UserProvider = ({ children})=>{
     const [user,setUser] = useState(null);

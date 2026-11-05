@@ -46,7 +46,7 @@ export const TransactionProvider = ({ children })=>{
         const created  = await res.json();
         setTransaction((prev) => [created,...prev]);
     }
-    const updateTransaction = async (data) => {
+    const updateTransaction = async (data,id) => {
 
         const res = await fetch(`${API}/updateTransaction`, {
             method: "PUT",

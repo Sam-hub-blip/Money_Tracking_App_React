@@ -13,7 +13,6 @@ function Details({props, setHideModal}) {
     const handleSubmit = async(e) => {
         e.preventDefault();
         const data = {
-            id : props.id,
             name : name,
             amount : amount,
             date : date,
@@ -21,7 +20,7 @@ function Details({props, setHideModal}) {
             description : description
         };
         try {
-            await updateTransaction(data,);
+            await updateTransaction(data,props.id);
             cancel();
         } catch (error) {
             setError(error);            

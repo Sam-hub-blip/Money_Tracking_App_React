@@ -10,24 +10,24 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import About from "../pages/About/About";
 
-function Routes(){
+function AppRoutes(){
     return (
         <Routes>
             //Routes publiques 
-            <Route path="/" element={Home} />
-            <Route path="/login" element={Login}/>
-            <Route path="/register" element={Register}/>
-            <Route path="/about" element={About}/>
+            <Route path="/" element={<Home/>} />
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/register" element={<Register/>}/>
+            <Route path="/about" element={<About/>}/>
             //Routes privées 
             <Route element={<PrivateRoutes/>}>
-                <Route path="/dashboard" element={Dashboard}/>
-                <Route path="/history"  element={History}/>
-                <Route path="/profil"  element={Profil}/>
-                <Route path="/stats"  element={Stats}/>
+                <Route path="/dashboard" element={<Dashboard/>}/>
+                <Route path="/history"  element={<History/>}/>
+                <Route path="/profil"  element={<Profil/>}/>
+                <Route path="/stats"  element={<Stats/>}/>
             </Route>
             //Not found
-            <Route path="*" element={NotFound} />
+            <Route path="*" element={<NotFound/>} />
         </Routes>
     );
 }
-export default Routes;
+export default AppRoutes;

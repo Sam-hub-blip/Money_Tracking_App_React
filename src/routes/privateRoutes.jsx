@@ -1,14 +1,14 @@
 import { useAuth } from "../hooks/useAuth";
-import { Navigate, } from "react-router";
+import { Navigate, Outlet} from "react-router";
 
 
-function PrivateRoutes({children}) {
+function PrivateRoutes() {
     const { user } = useAuth();
 
     if(!user){
         return <Navigate to="/login" replace/>
     }
-    return children;
+    return <Outlet/> ;
 }
 export default PrivateRoutes;
 
