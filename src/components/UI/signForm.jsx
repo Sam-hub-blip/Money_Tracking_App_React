@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { InputPassword, InputEmail } from "../layouts/inputs.jsx"
+import { Link } from "react-router";
 
 function SignForm({setData}) {
     const [firstName,setFirstName] = useState("");
@@ -43,7 +44,7 @@ function SignForm({setData}) {
             <button type="submit" disabled={(lastName.trim()=="" || firstName.trim()=="" || email.trim()=="" || password.trim()=="")}>Sign</button>
         </div>
         <div>
-            <Link>I already have an account?</Link>
+            <Link to="/login">I already have an account?</Link>
         </div>
     </form>
   )

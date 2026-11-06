@@ -11,6 +11,7 @@ export function ThemeProvider ({ children }){
         : "light";
     });
 
+    const [noNav, setNoNav] = useState(false);
     useEffect(() => {
         document.documentElement.classList.toggle("dark",theme === "dark");
         localStorage.setItem("theme",theme);
@@ -19,7 +20,7 @@ export function ThemeProvider ({ children }){
         setTheme((t)=> t === "light" ? "dark": "light");
     }
     return(
-        <ThemeContext.Provider value={{theme, toggleTheme}}>
+        <ThemeContext.Provider value={{theme, toggleTheme,noNav,setNoNav}}>
             {children}
         </ThemeContext.Provider>
     )

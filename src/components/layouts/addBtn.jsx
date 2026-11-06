@@ -1,12 +1,12 @@
-function AddBtn(props) {
+function AddBtn({ setShowModal }) {
     
 
     return (
-        <div>
+        <button type="button" onClick={setShowModal(true)}>
             <span>
-                +
+                + Add Transaction
             </span>
-        </div>
+        </button>
     );
 }
 
