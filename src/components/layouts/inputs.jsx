@@ -40,7 +40,7 @@ export function InputPassword({name, setPassword}) {
         <label htmlFor={name} > {name} </label>
         <div>
             <input type={toggle? "text": "password"} name={name} id={name} onChange={(e)=> setPassword(e.target.value) } />
-            <button onClick={()=>setToggle(!toggle)}>
+            <button onClick={() => setToggle(!toggle)}>
                 {toggle? "hide" : "show"}
             </button>
         </div>

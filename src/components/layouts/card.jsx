@@ -1,10 +1,9 @@
-function Card(props) {
+const Card = (data) => {
     
-
     return (
-        <div>
-            <span> {props.text} </span>
-            <span> {props.amount} </span>
+        <div className=""> 
+            <span> {data.text} </span>
+            <span> {data.amount} </span>
         </div>
         
     );

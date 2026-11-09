@@ -1,8 +1,11 @@
 import { useState } from "react"
 import { InputPassword, InputEmail } from "../layouts/inputs.jsx"
 import { Link } from "react-router";
+import { useAuth } from "../../hooks/useAuth.js";
 
-function SignForm({setData}) {
+
+function SignForm({}) {
+    const {register} = useAuth();
     const [firstName,setFirstName] = useState("");
     const [lastName,setLastName] = useState("");
     const [email,setEmail] = useState("");
@@ -10,17 +13,19 @@ function SignForm({setData}) {
     const [confirmPassword,setConfirmPassword] = useState("");
     const [PasswordError,setPasswordError] = useState(false);
     
-    const handleSubmit = (e)=>{
+    const handleSubmit = async(e)=>{
         e.preventDefault();
+        if(password!==confirmPassword){
+        setPasswordError(true);
+        return;
+        }
         setPasswordError(false);
-        setData({
-            name : firstName +" "+lastName,
-            email : email,
-            password : password
-        })
-    }
+        let name = firstName +" "+ lastName;
+        await register(name,email,password);
 
-  return (
+       
+    }
+    return (
     <form action="#" onSubmit={handleSubmit}>
         <div>
             <label htmlFor="firstName" >Enter your first name</label>
@@ -30,9 +35,9 @@ function SignForm({setData}) {
             <label htmlFor="lastName">Enter your last name</label>
             <input type="text" name="lastName" id="lastName" onChange={(e)=> setLastName(e.target.value)} />
         </div>
-        <InputEmail setEmail={setEmail} />
-        <InputPassword name="Enter your password" setPassword={setPassword}/>
-        <InputPassword name="Confirm your password" setPassword={setConfirmPassword}/>
+        <InputEmail setEmail={setEmail} /> {/* Se rendre de la fichier inputs.jsx pour le design  */}
+        <InputPassword name="Enter your password" setPassword={setPassword}/> {/* Se rendre de la fichier inputs.jsx pour le design  */}
+        <InputPassword name="Confirm your password" setPassword={setConfirmPassword}/> {/* Se rendre de la fichier inputs.jsx pour le design  */}
         {
             PasswordError &&  (
                 <div>
@@ -41,10 +46,11 @@ function SignForm({setData}) {
             )
         }
         <div>
-            <button type="submit" disabled={(lastName.trim()=="" || firstName.trim()=="" || email.trim()=="" || password.trim()=="")}>Sign</button>
+            <button type="submit" >Sign</button>
         </div>
         <div>
             <Link to="/login">I already have an account?</Link>
+
         </div>
     </form>
   )

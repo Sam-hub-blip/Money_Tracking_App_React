@@ -33,7 +33,7 @@ function LoginForm( { setNoNav }) {
         <div>
             <Link to="/register" >I don't have account?</Link>
         </div>
-        
+        <input type="text" />
     </form>
   )
 }

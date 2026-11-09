@@ -8,7 +8,7 @@ import { UserProvider } from './context/userContext/userProvider.jsx';
 import { ThemeProvider } from './context/themeContext/themeProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
-    <StrictMode>
+    
         <BrowserRouter>
             <UserProvider>
                 <ThemeProvider>
@@ -18,6 +18,5 @@ createRoot(document.getElementById('root')).render(
                 </ThemeProvider>
             </UserProvider> 
         </BrowserRouter>
-    </StrictMode>      
 
 )
