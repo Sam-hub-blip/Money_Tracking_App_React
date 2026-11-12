@@ -2,11 +2,11 @@ const Card = (data) => {
     
     return (
         <div className=""> 
-            <span> {data.text} </span>
-            <span> {data.amount} </span>
+            <span> {data.data.text} </span>
+            <span> {data.data.amount} </span>
         </div>
         
     );
 }
 
-export default Card
+export default Card ; 

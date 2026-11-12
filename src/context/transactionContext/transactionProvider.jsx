@@ -6,7 +6,30 @@ import  {API} from "../userContext/userProvider"
 
 export const TransactionProvider = ({ children })=>{
     const { user } = useContext(UserContext);
-    const [transaction,setTransaction] = useState([]);
+    const [transactions,setTransaction] = useState([{
+            id: 1,
+            name : "Transport",
+            description: " Aller-Retour Ouaga",
+            amount :  2500,
+            type : "expense",
+            date : "2026-10-17"
+        },
+    {
+            id:2,
+            name : "Transport",
+            description: " Aller-Retour Ouaga",
+            amount :  2500,
+            type : "expense",
+            date : "2026-10-17"
+        },
+        {
+            id:3,
+            name : "Salaire",
+            description : "Paye du mois",
+            amount : 150000,
+            type : "income",
+            date : "2026-10-25"
+        }]);
     const [loading,setLoading] = useState(false);
     const [error,setError] = useState(null);
 
@@ -70,15 +93,15 @@ export const TransactionProvider = ({ children })=>{
         if(!res.ok) throw new Error("Echec de la suppression");
         setTransaction((prev)=> prev.filter((t)=> t.id !== id));
     }
-    const expenseBalance = transaction.reduce(
+    const expenseBalance = transactions.reduce(
         (sum,t) => sum + (t.type ==="expense"? t.amount: 0),0
     );
-    const incomeBalance = transaction.reduce(
+    const incomeBalance = transactions.reduce(
         (sum,t) => sum + (t.type ==="income"? t.amount: 0),0
     );
     return(
         <TransactionContext.Provider value={{
-        transaction,
+        transactions,
         loading,
         error,
         refresh,

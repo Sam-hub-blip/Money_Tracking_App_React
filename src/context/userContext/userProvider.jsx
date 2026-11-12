@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 export const API = import.meta.env.VITE_API_URL;
 
 export const UserProvider = ({ children})=>{
-    const [user,setUser] = useState(null);
+    const [user,setUser] = useState(1);
     const [loading, setLoading] = useState(true);
 
     useEffect(() =>{

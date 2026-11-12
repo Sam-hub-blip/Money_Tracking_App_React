@@ -1,4 +1,5 @@
 import { Link,  } from "react-router";
+import ThemeToggle from "./themeToggle";
 
 function NavbarOut() {
     return (
@@ -12,6 +13,7 @@ function NavbarOut() {
                 <Link to="/login">Login</Link>
                 <Link to="/register">Register</Link>
             </div>
+            <ThemeToggle/>
         </nav>
     );
 }

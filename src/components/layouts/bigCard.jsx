@@ -1,10 +1,10 @@
 function BigCard(data) {
     
-
+    
     return (
         <div>
-            <span>{data.text}</span>
-            <span>{data.amount}</span>
+            <span>{data.data.text}</span>
+            <span>{data.data.amount}</span>
         </div>
     );
 }

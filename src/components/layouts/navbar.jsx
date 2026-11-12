@@ -1,5 +1,5 @@
 import { Link  } from "react-router";
-
+import ThemeToggle from "./themeToggle";
 function Navbar() {
     return (
         <nav>
@@ -13,6 +13,7 @@ function Navbar() {
                 <Link to="/about">About</Link>
                 <Link to="/profil">Profil</Link>
             </div>
+            <ThemeToggle/>
         </nav>
     );
 }

@@ -9,25 +9,29 @@ import Stats from "../pages/Stats/Stats";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import About from "../pages/About/About";
+import Layout from "../components/layouts/layout";
 
-function AppRoutes(){
-    return (
-        <Routes>
-            //Routes publiques 
-            <Route path="/" element={<Home/>} />
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/register" element={<Register/>}/>
-            <Route path="/about" element={<About/>}/>
-            //Routes privées 
-            <Route element={<PrivateRoutes/>}>
-                <Route path="/dashboard" element={<Dashboard/>}/>
-                <Route path="/history"  element={<History/>}/>
-                <Route path="/profil"  element={<Profil/>}/>
-                <Route path="/stats"  element={<Stats/>}/>
-            </Route>
-            //Not found
-            <Route path="*" element={<NotFound/>} />
-        </Routes>
-    );
+// routes.jsx — les pages d'auth HORS du Layout
+function AppRoutes() {
+  return (
+    <Routes>
+      {/* Sans navbar ni footer */}
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+
+      {/* Avec navbar + footer */}
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route element={<PrivateRoutes />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/history" element={<History />} />
+          <Route path="/profil" element={<Profil />} />
+          <Route path="/stats" element={<Stats />} />
+        </Route>
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
 }
 export default AppRoutes;

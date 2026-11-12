@@ -1,21 +1,23 @@
 import AddBtn from "../layouts/addBtn";
 import SmallHistoryElement from "../layouts/smallHistoryElement";
 import { Link } from "react-router";
+import { useState } from "react";
 function DashStory({data}) {
     
-
+    const [showModal, setShowModal] = useState(false);
+    if(showModal) console.log("show");
     return (
         <div>
             <div>
                 <section>Transactions</section>
                 <section>
-                    <AddBtn />
+                    <AddBtn setShowModal={setShowModal} />
                 </section>
             </div>
-            <div>
+            <div className="bg-red-300">
                 {
-                    data.map((index,item)=>(
-                        <SmallHistoryElement key={index} items={item}/>
+                    data.map((item)=>(
+                        <SmallHistoryElement key={item.id} items={item}/>
                     ))
                 }
             </div>

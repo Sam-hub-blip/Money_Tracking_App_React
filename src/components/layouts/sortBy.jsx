@@ -1,14 +1,11 @@
 import { useState } from "react"
 
-function SortBy({categoryList, setSortBy}) {
-    const [inverted,setinverted] = useState(false);
+function SortBy({ setSortBy}) {
+    const categoryList = ["date", "amount"];
     const handleSelection = (e)=>{
-      const selection = e.target.value;
-      setSortBy({
-        selection : selection,
-        invertion : inverted
-      })
+      setSortBy(e.target.value)
     }
+   
   return (
     <div>
         <select name="sort" id="sort" onChange={handleSelection}>
@@ -17,9 +14,8 @@ function SortBy({categoryList, setSortBy}) {
             <option  key={item} value={item}>{item}</option>
           ))}
         </select>
-        <button onClick={()=> setinverted(!inverted)}>invert</button>
     </div>
   )
 }
 
-export default SortBy
+export default SortBy;
