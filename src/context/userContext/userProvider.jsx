@@ -49,7 +49,7 @@ export const UserProvider = ({ children})=>{
                 headers :  { "Content-Type" : "application/json"},
                 body : JSON.stringify({name, email, password}),
             });
-
+            if(!res.ok) throw new Error("Echec de l'inscription");
             const { token, user} = await res.json();
             localStorage.setItem('token',token);
             setUser(user);
