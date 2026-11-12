@@ -19,6 +19,10 @@ les adresses des fetch = {
     ./transactions => recuperation de la liste des transactions
     ./addTransaction => ajout d'une transaction avec name,amount,type,date,description
     ./updateTransaction => modifier une trnasaction avec id,name,amount,type,date,description
-    ./delete/${id} => supprimer une transaction 
+    ./delete/${id} => supprimer une transaction
+
+
+
+
     
 }
