@@ -4,11 +4,14 @@ import { useTransactions } from "../../hooks/useTransaction";
 import SearchCondition from "../../components/UI/searchCondition";
 function History() {
     const { transactions } = useTransactions();
-    const [list, setList] = useState(null);
+    const [list, setList] = useState([]);
+    const handleChange = (data) =>{
+      setList(data);
+    }
     return (
       <>
-        <SearchCondition setList={setList} />
-        <HistoryE list={transactions}/>
+        <SearchCondition handleChange={handleChange} />
+        <HistoryE list={list}/>
       </>  
     );
 }

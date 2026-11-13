@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import Element from '../layouts/element'
 
 
 
 const HistoryE = ( { list }) => {
+    
   return (
     <>
         <div>
@@ -10,12 +12,12 @@ const HistoryE = ( { list }) => {
             <span>Name</span>
             <span>Description</span>
             <span>Amount</span>
-            <span>Type</span>
+            <span >Type</span>
         </div>
         <div>
             {
                 list.map((item) =>( 
-                    <Element key={item.id}  items={item}/>
+                    <Element key={item.id}   items={item}/>
                 ))
             }
         </div>

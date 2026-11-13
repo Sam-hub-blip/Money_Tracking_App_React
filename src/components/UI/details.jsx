@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTransactions } from "../../hooks/useTransaction";
-function Details({props, setHideModal}) {
+function Details({props,hide, setHide}) {
 
     const { updateTransaction } = useTransactions();
     const [name,setName] = useState(props.name);
@@ -9,7 +9,7 @@ function Details({props, setHideModal}) {
     const [type,setType] = useState(props.type);
     const [description,setDescription] = useState(props.description);
     const [error,setError] = useState(null);
-    
+    let today = new Date().toLocaleDateString()
     const handleSubmit = async(e) => {
         e.preventDefault();
         const data = {
@@ -19,25 +19,31 @@ function Details({props, setHideModal}) {
             type : type,
             description : description
         };
-        try {
+        /*try {
             await updateTransaction(data,props.id);
             cancel();
         } catch (error) {
             setError(error);            
-        }
+        }*/
+       console.log("Update");
+       cancel();
 
     }
     const cancel = () => {
+       
+            setHide(true);
+      
         setName("");
         setAmount(0);
-        setDate(today());
+        setDate(new Date().toLocaleDateString());
         setDescription("");
         setType("");
-        setHideModal(true);
+        
     }
-
+    //Ce composant doit flotter au dessus des autres 
     return (
-        <form action="#" onSubmit={handleSubmit}>
+        
+        <form action="#" onSubmit={handleSubmit} hidden={hide} className="">
             <div>
                 <label htmlFor="name">Name</label>
                 <input type="text" value={name} id="name" onChange={(e)=> setName(e.target.value)} />
