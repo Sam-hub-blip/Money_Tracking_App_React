@@ -2,7 +2,9 @@ function Stats() {
     
 
     return (
-        <div></div>
+        <div>
+	Statistiques page
+	</div>
     );
 }
 export default Stats;
